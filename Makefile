@@ -1,17 +1,13 @@
-TEMPDIR := $(shell mktemp -d)
-PROJECTDIR := $(shell pwd)
-IS_CI = $(shell echo $$CI)
 
-.PHONY: clean
-clean:
+.PHONY: build
+build:
 	rm -rf build
-
-build: clean
 	mkdir build
+	cp handler.py $@
+	cd build && zip -r lambda_deployment.zip .
+
+build/handler.py:
+	cp handler.py $@
 
 build/lambda_deployment.zip: src
 	cd build && zip -r lambda_deployment.zip .
-
-.PHONY: src
-src:
-	build/handler.py

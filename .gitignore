@@ -1,3 +1,16 @@
 build/*
+*.pyc
+vendor
+
+target/*
+build/*
+
+.vagrant
+
+.idea
+.DS_Store
+nosetests.json
+
 *.tfstate.backup
 terraform.tfvars
+.env
